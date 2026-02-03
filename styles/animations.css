@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   --color-background: #F0F9FF;
@@ -11,6 +13,14 @@
 
   --color-orange-500: #F97316;
   --color-orange-600: #EA580C;
+
+  --color-slate-50: #F8FAFC;
+  --color-slate-100: #F1F5F9;
+  --color-slate-200: #E2E8F0;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1E293B;
+  --color-slate-900: #0F172A;
 
   @keyframes scroll {
     from {
@@ -70,8 +80,23 @@
 }
 
 @layer base {
+  :root {
+    --background: 200 100% 95%;
+  }
+
+  .dark {
+    --background: 200 100% 5%;
+    --color-sky-50: #0C4A6E;
+    --color-sky-100: #075985;
+    --color-sky-900: #F0F9FF;
+    --color-slate-900: #F8FAFC;
+    --color-slate-700: #E2E8F0;
+    --color-slate-600: #94A3B8;
+    --color-slate-200: #1E293B;
+  }
+
   body {
-    @apply bg-background text-slate-900;
+    @apply bg-background text-slate-900 dark:text-slate-100;
     font-family: var(--font-sans);
   }
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Button } from '@/components/ui/Button';
 import { ArrowRight, Star, Shield, Clock } from 'lucide-react';
 
@@ -15,7 +16,8 @@ export const Hero = () => {
             </div>
 
             <div className="container mx-auto px-4 relative z-10">
-                <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
                     {/* Social Proof Pill */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -86,11 +88,31 @@ export const Hero = () => {
                             <Clock className="w-5 h-5 text-sky-500" />
                             <span className="font-medium text-sm">Reservas en Tiempo Real</span>
                         </div>
-                        <div className="flex items-center gap-3 text-slate-500 md:col-span-1 col-span-2 justify-center">
+                        <div className="flex items-center gap-3 text-slate-500 md:col-span-1 col-span-2 justify-center lg:justify-start">
                             <Star className="w-5 h-5 text-sky-500 fill-sky-500" />
                             <span className="font-medium text-sm">Rating 4.9/5 Estrellas</span>
                         </div>
                     </motion.div>
+                </div>
+
+                {/* Hero Image */}
+                <motion.div
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.4, duration: 0.6 }}
+                    className="hidden lg:block relative"
+                >
+                    <div className="relative w-full aspect-[16/9] rounded-3xl overflow-hidden shadow-2xl shadow-sky-200/50">
+                        <Image
+                            src="/hero-image.png"
+                            alt="Coches eléctricos cargándose en parking futurista"
+                            fill
+                            className="object-cover"
+                            priority
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-sky-900/20 to-transparent" />
+                    </div>
+                </motion.div>
                 </div>
             </div>
         </section>

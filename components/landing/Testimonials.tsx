@@ -1,8 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
-import { cn } from '@/lib/utils';
 
 const testimonials = [
     {
@@ -59,7 +57,7 @@ export const Testimonials = () => {
                                     ))}
                                 </div>
                                 <p className="text-slate-700 italic mb-8 relative z-10 leading-relaxed">
-                                    "{t.content}"
+                                    &ldquo;{t.content}&rdquo;
                                 </p>
                                 <div className="mt-auto flex items-center gap-4">
                                     <div className="w-12 h-12 rounded-full overflow-hidden bg-sky-100 border-2 border-white shadow-sm">

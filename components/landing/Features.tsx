@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Smartphone, Clock, Shield, MapPin, CreditCard, Sparkles } from 'lucide-react';
+import { Clock, Shield, MapPin, CreditCard, Sparkles } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const features = [
