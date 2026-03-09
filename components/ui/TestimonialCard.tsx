@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { Quote } from 'lucide-react';
 
@@ -27,7 +28,7 @@ export const TestimonialCard = ({ content, name, role, avatar, rating = 5, class
       <p className="text-slate-700 italic mb-8 relative z-10 leading-relaxed">&ldquo;{content}&rdquo;</p>
       <div className="mt-auto flex items-center gap-4">
         <div className="w-12 h-12 rounded-full overflow-hidden bg-sky-100 border-2 border-white shadow-sm">
-          <img src={avatar} alt={name} className="w-full h-full object-cover" loading="lazy" />
+          <Image src={avatar} alt={name} width={48} height={48} className="w-full h-full object-cover" />
         </div>
         <div>
           <h4 className="font-bold text-sky-900">{name}</h4>

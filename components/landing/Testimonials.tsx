@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { Star, Quote } from 'lucide-react';
 
 const testimonials = [
@@ -61,7 +62,7 @@ export const Testimonials = () => {
                                 </p>
                                 <div className="mt-auto flex items-center gap-4">
                                     <div className="w-12 h-12 rounded-full overflow-hidden bg-sky-100 border-2 border-white shadow-sm">
-                                        <img src={t.avatar} alt={t.name} className="w-full h-full object-cover" />
+                                        <Image src={t.avatar} alt={t.name} width={48} height={48} className="w-full h-full object-cover" />
                                     </div>
                                     <div>
                                         <h4 className="font-bold text-sky-900">{t.name}</h4>

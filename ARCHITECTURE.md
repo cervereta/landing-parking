@@ -98,7 +98,7 @@ types/
 ### 6. Dependencias Tecnológicas
 
 **Framework**: Next.js 16 con React 19
-**Estilos**: Tailwind CSS v4
+**Estilos**: Tailwind CSS v3
 **Animaciones**: Framer Motion
 **Tipografía**: Outfit (Google Fonts)
 **Iconos**: Lucide React
@@ -106,7 +106,6 @@ types/
 
 ### 7. Próximos Pasos Sugeridos
 
-- [ ] Implementar Storybook para documentación de componentes
 - [ ] Añadir tests con Jest + React Testing Library
 - [ ] Implementar sistema de tema claro/oscuro
 - [ ] Añadir integración con analytics
@@ -119,21 +118,19 @@ types/
 - **Landing principal**: `landing-parking` 
   - URL: https://landing-parking-h5sywllpw-cerveretadevs-projects.vercel.app
   - Comando: `vercel --prod`
-- **Storybook**: `landing-parking-storybook`
-  - URL: https://landing-parking-storybook-572r00tyk-cerveretadevs-projects.vercel.app
-  - Comandos: `npm run build-storybook && cd storybook-static && vercel --prod`
 
 **Receta rápida para futuros deploys:**
 ```bash
-# 1. Deploy landing (desde repo root)
-vercel --prod
+# 1. Verificar build, lint y tests
+npm run build
+npm run lint
+npm run test
 
-# 2. Deploy Storybook (desde repo root)
-npm run build-storybook
-cd storybook-static && vercel --prod
+# 2. Deploy landing (desde repo root)
+vercel --prod
 ```
 
 **Notas importantes:**
-- Ambos proyectos usan URLs automáticas de Vercel (no dominio personalizado)
+- La landing usa URL automática de Vercel (sin dominio personalizado por ahora)
 - El proyecto principal usa framework preset Next.js
-- Storybook se despliega como proyecto "Other" apuntando a la carpeta `storybook-static`
+- Storybook ya no forma parte del proyecto ni del flujo de despliegue
