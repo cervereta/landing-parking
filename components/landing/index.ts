@@ -1,7 +1,7 @@
-// Landing components
-export { Hero } from './Hero/Hero';
-export { Features } from './Features';
+// Landing page components
+export { Hero } from './Hero';
+export { DualFeatures } from './DualFeatures';
 export { HowItWorks } from './HowItWorks';
-export { Testimonials } from './Testimonials';
+export { TrustSection } from './TrustSection';
 export { CTASection } from './CTASection';
-export { Stats } from './Stats';
+export { Footer } from './Footer';

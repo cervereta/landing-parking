@@ -1,14 +1,18 @@
-import { Hero, Features, HowItWorks, Testimonials, CTASection, Stats } from "@/components/landing";
+import { Header } from "@/components/layout/Header";
+import { Hero, DualFeatures, HowItWorks, TrustSection, CTASection, Footer } from "@/components/landing";
 
 export default function Home() {
   return (
     <>
-      <Hero />
-      <Stats />
-      <Features />
-      <HowItWorks />
-      <Testimonials />
-      <CTASection />
+      <Header />
+      <main>
+        <Hero />
+        <DualFeatures />
+        <HowItWorks />
+        <TrustSection />
+        <CTASection />
+        <Footer />
+      </main>
     </>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 
 describe('Button', () => {
   it('renders correctly', () => {
@@ -9,8 +9,8 @@ describe('Button', () => {
   });
 
   it('applies variant classes', () => {
-    const { container } = render(<Button variant="primary">Primary</Button>);
-    expect(container.firstChild).toHaveClass('bg-sky-600');
+    const { container } = render(<Button variant="default">Primary</Button>);
+    expect(container.firstChild).toHaveClass('bg-primary');
   });
 
   it('handles click events', () => {
