@@ -11,87 +11,92 @@ interface NavLink {
 }
 
 const navLinks: NavLink[] = [
-  { href: '#features', label: 'Características' },
-  { href: '#how-it-works', label: 'Cómo funciona' },
+  { href: '#how-it-works', label: 'Como funciona' },
   { href: '#trust', label: 'Seguridad' },
+  { href: '#owners', label: 'Propietarios' },
+  { href: '#drivers', label: 'Conductores' },
 ];
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-4 left-4 right-4 z-50">
-      <div className="brutal-card bg-pure max-w-7xl mx-auto">
-        <div className="flex items-center justify-between px-4 py-2 md:px-6 md:py-3">
-          {/* Logo - Image */}
-          <Link href="/" className="flex items-center group flex-shrink-0">
+    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6 lg:px-8">
+      <div className="glass-panel mx-auto max-w-7xl px-4 py-3 sm:px-5 lg:px-6">
+        <div className="flex items-center justify-between gap-4">
+          <Link href="/" className="flex shrink-0 items-center group" aria-label="Ir al inicio de ParkCar">
             <div className="relative h-16 w-[172px] md:h-20 md:w-[216px]">
               <Image
                 src="/images/logo4.png"
                 alt="PARKCAR"
                 fill
                 sizes="(min-width: 768px) 216px, 172px"
-                className="object-contain transition-transform group-hover:scale-105"
+                className="object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                 priority
               />
             </div>
           </Link>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden items-center gap-1 lg:flex">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-4 py-2 font-display font-bold text-sm uppercase tracking-wide hover:bg-safety border-[3px] border-transparent hover:border-ink transition-all"
+                className="rounded-full px-4 py-2 font-body text-sm font-medium text-ink/70 transition-colors hover:text-ink"
               >
                 {link.label}
               </Link>
             ))}
           </nav>
 
-          {/* CTA Buttons */}
-          <div className="flex items-center gap-3">
-            <a href="https://parking.cerveretadev.es" className="hidden sm:block font-display font-bold text-xs uppercase tracking-wider hover:text-safety-dark transition-colors">
+          <div className="hidden items-center gap-3 md:flex">
+            <a
+              href="https://parking.cerveretadev.es"
+              className="rounded-full px-4 py-2 font-body text-sm font-medium text-ink/70 transition-colors hover:text-ink"
+            >
               Entrar
             </a>
-            <a href="https://parking.cerveretadev.es" className="brutal-btn !py-2 !px-4 !text-sm">
-              Registro
+            <a href="https://parking.cerveretadev.es" className="premium-btn">
+              Empieza gratis
             </a>
-            
-            {/* Mobile Menu Toggle */}
-            <button
-              className="md:hidden brutal-btn !p-2 !bg-pure"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
-              aria-expanded={isMenuOpen}
-            >
-              {isMenuOpen ? <X className="w-5 h-5" strokeWidth={3} /> : <Menu className="w-5 h-5" strokeWidth={3} />}
-            </button>
           </div>
+
+          <button
+            type="button"
+            className="premium-btn-secondary !px-4 !py-3 md:hidden"
+            onClick={() => setIsMenuOpen((open) => !open)}
+            aria-label={isMenuOpen ? 'Cerrar menu' : 'Abrir menu'}
+            aria-expanded={isMenuOpen}
+          >
+            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
 
-        {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden border-t-[3px] border-ink">
-            <nav className="flex flex-col p-4 gap-2 bg-concrete">
+          <div className="mt-4 border-t border-ink/10 pt-4 md:hidden">
+            <nav className="flex flex-col gap-2">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="px-4 py-3 font-display font-bold text-sm uppercase tracking-wide bg-pure border-[3px] border-ink hover:bg-safety transition-all"
-                  style={{ boxShadow: '3px 3px 0px 0px #0A0A0A' }}
+                  className="rounded-2xl border border-ink/10 bg-pure/70 px-4 py-3 font-body text-sm font-medium text-ink/80"
                 >
                   {link.label}
                 </Link>
               ))}
-              <div className="border-t-[3px] border-ink mt-2 pt-4 flex flex-col gap-2">
-                <a href="https://parking.cerveretadev.es" className="w-full brutal-btn !bg-pure !text-ink text-center">
-                  Iniciar Sesión
-                </a>
-              </div>
             </nav>
+            <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
+              <a
+                href="https://parking.cerveretadev.es"
+                className="premium-btn-secondary justify-center"
+              >
+                Entrar
+              </a>
+              <a href="https://parking.cerveretadev.es" className="premium-btn justify-center">
+                Empieza gratis
+              </a>
+            </div>
           </div>
         )}
       </div>

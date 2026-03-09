@@ -4,91 +4,175 @@
 
 @layer base {
   :root {
-    --font-display: 'Lexend Mega', sans-serif;
-    --font-body: 'Space Grotesk', sans-serif;
+    --font-display: 'Sora', sans-serif;
+    --font-body: 'Manrope', sans-serif;
+    --surface-0: #f5f1e8;
+    --surface-1: rgba(252, 251, 248, 0.88);
+    --surface-2: rgba(252, 251, 248, 0.72);
+    --line-soft: rgba(23, 23, 23, 0.1);
+    --line-strong: rgba(23, 23, 23, 0.18);
+    --shadow-soft: 0 24px 60px -28px rgba(23, 23, 23, 0.28);
+    --shadow-strong: 0 30px 90px -40px rgba(23, 23, 23, 0.38);
   }
 
   * {
     @apply border-ink;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-pure text-ink;
+    background:
+      radial-gradient(circle at top, rgba(228, 200, 106, 0.16), transparent 28%),
+      linear-gradient(180deg, #f7f3eb 0%, #f5f1e8 48%, #fcfbf8 100%);
+    @apply text-ink;
     font-family: var(--font-body);
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    @apply font-black tracking-tight uppercase;
+    @apply font-semibold tracking-tight;
+  }
+
+  a,
+  button,
+  input {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  ::selection {
+    background: rgba(214, 169, 40, 0.32);
+    color: #171717;
   }
 }
 
 @layer components {
-  /* Neo-brutalist Card */
+  .section-shell {
+    @apply relative overflow-hidden;
+  }
+
+  .section-copy {
+    @apply mx-auto max-w-2xl;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-ink/10 bg-pure/80 px-4 py-2 font-display text-[11px] font-semibold uppercase tracking-[0.24em] text-steel backdrop-blur;
+    box-shadow: 0 10px 30px -22px rgba(23, 23, 23, 0.4);
+  }
+
+  .glass-panel {
+    @apply rounded-[32px] border border-ink/10 bg-pure/70 backdrop-blur-xl;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .premium-card {
+    @apply rounded-[28px] border border-ink/10 bg-pure/90 backdrop-blur;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+
+  .premium-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-strong);
+    border-color: rgba(23, 23, 23, 0.16);
+  }
+
+  .premium-card-dark {
+    @apply rounded-[30px] border border-pure/10 bg-concrete text-pure;
+    box-shadow: 0 28px 70px -34px rgba(10, 10, 10, 0.65);
+  }
+
+  .premium-btn {
+    @apply inline-flex items-center justify-center rounded-full border border-safety/80 bg-safety px-6 py-3 font-body text-sm font-semibold text-ink;
+    box-shadow: 0 18px 44px -22px rgba(214, 169, 40, 0.6);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  }
+
+  .premium-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 24px 54px -24px rgba(214, 169, 40, 0.66);
+    background-color: #e4c86a;
+  }
+
+  .premium-btn-secondary {
+    @apply inline-flex items-center justify-center rounded-full border border-ink/10 bg-pure/75 px-6 py-3 font-body text-sm font-semibold text-ink backdrop-blur;
+    box-shadow: 0 16px 40px -24px rgba(23, 23, 23, 0.24);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .premium-btn-secondary:hover {
+    transform: translateY(-1px);
+    border-color: rgba(23, 23, 23, 0.18);
+    box-shadow: 0 20px 48px -24px rgba(23, 23, 23, 0.28);
+  }
+
+  .premium-input {
+    @apply h-14 w-full rounded-full border border-ink/10 bg-pure/80 px-5 font-body text-base text-ink outline-none backdrop-blur placeholder:text-steel;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  }
+
+  .premium-input:focus {
+    border-color: rgba(214, 169, 40, 0.9);
+    box-shadow: 0 0 0 4px rgba(214, 169, 40, 0.15);
+    background-color: rgba(252, 251, 248, 0.96);
+  }
+
+  .metric-chip {
+    @apply inline-flex items-center gap-2 rounded-full border border-ink/10 bg-pure/75 px-4 py-2 text-sm text-ink backdrop-blur;
+    box-shadow: 0 12px 32px -24px rgba(23, 23, 23, 0.32);
+  }
+
   .brutal-card {
-    @apply border-[3px] border-ink bg-pure;
-    box-shadow: 4px 4px 0px 0px #0A0A0A;
-    transition: all 0.1s ease;
+    @apply premium-card;
   }
 
-  .brutal-card:hover {
-    box-shadow: 6px 6px 0px 0px #0A0A0A;
-    transform: translate(-2px, -2px);
-  }
-
-  .brutal-card:active {
-    box-shadow: 2px 2px 0px 0px #0A0A0A;
-    transform: translate(2px, 2px);
-  }
-
-  /* Neo-brutalist Button */
   .brutal-btn {
-    @apply inline-flex items-center justify-center border-[3px] border-ink bg-safety px-6 py-3 font-display font-bold uppercase tracking-wider;
-    box-shadow: 4px 4px 0px 0px #0A0A0A;
-    transition: all 0.1s ease;
-  }
-
-  .brutal-btn:hover {
-    box-shadow: 6px 6px 0px 0px #0A0A0A;
-    transform: translate(-2px, -2px);
-  }
-
-  .brutal-btn:active {
-    box-shadow: 0px 0px 0px 0px #0A0A0A;
-    transform: translate(4px, 4px);
+    @apply premium-btn;
   }
 
   .brutal-btn-secondary {
-    @apply brutal-btn bg-pure text-ink;
+    @apply premium-btn-secondary;
   }
 
   .brutal-btn-dark {
-    @apply brutal-btn bg-ink text-pure;
+    @apply inline-flex items-center justify-center rounded-full border border-concrete/80 bg-concrete px-6 py-3 font-body text-sm font-semibold text-pure;
+    box-shadow: 0 22px 55px -28px rgba(23, 23, 23, 0.6);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .brutal-btn-dark:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 26px 65px -30px rgba(23, 23, 23, 0.66);
   }
 
   .brutal-btn-warning {
-    @apply brutal-btn bg-warning text-pure;
-    box-shadow: 4px 4px 0px 0px #0A0A0A;
+    @apply premium-btn;
+    background-color: #b4543a;
+    border-color: rgba(180, 84, 58, 0.72);
+    color: #fcfbf8;
+    box-shadow: 0 20px 48px -24px rgba(180, 84, 58, 0.5);
   }
 
-  /* Road/Safety Patterns */
   .pattern-diagonal {
     background: repeating-linear-gradient(
       45deg,
-      #FFD700,
-      #FFD700 12px,
-      #0A0A0A 12px,
-      #0A0A0A 24px
+      rgba(214, 169, 40, 0.85),
+      rgba(214, 169, 40, 0.85) 12px,
+      rgba(23, 23, 23, 0.85) 12px,
+      rgba(23, 23, 23, 0.85) 24px
     );
   }
 
   .pattern-warning {
     background: repeating-linear-gradient(
       45deg,
-      #FF4444,
-      #FF4444 12px,
-      #FFFFFF 12px,
-      #FFFFFF 24px
+      rgba(180, 84, 58, 0.85),
+      rgba(180, 84, 58, 0.85) 12px,
+      rgba(252, 251, 248, 0.9) 12px,
+      rgba(252, 251, 248, 0.9) 24px
     );
   }
 
@@ -96,82 +180,72 @@
     background-image: repeating-linear-gradient(
       90deg,
       transparent,
-      transparent 30px,
-      #FFD700 30px,
-      #FFD700 60px
+      transparent 36px,
+      rgba(214, 169, 40, 0.7) 36px,
+      rgba(214, 169, 40, 0.7) 72px
     );
   }
 
   .pattern-border {
-    border: 4px solid #0A0A0A;
+    border: 1px solid rgba(23, 23, 23, 0.12);
     position: relative;
+    border-radius: 28px;
   }
 
   .pattern-border::after {
     content: '';
     position: absolute;
-    top: -4px;
-    left: -4px;
-    right: -4px;
-    bottom: -4px;
-    border: 4px solid #FFD700;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    border: 1px solid rgba(214, 169, 40, 0.24);
+    border-radius: 20px;
     pointer-events: none;
   }
 
-  /* Section Marker (like road signs) */
   .section-marker {
-    @apply inline-block bg-safety border-[3px] border-ink px-4 py-1 font-display font-bold text-sm uppercase tracking-widest;
-    box-shadow: 2px 2px 0px 0px #0A0A0A;
+    @apply eyebrow;
   }
 
-  /* Highway Sign Style */
   .highway-sign {
-    @apply bg-ink text-pure border-[3px] border-pure px-6 py-4 font-display font-black text-lg uppercase;
-    box-shadow: 4px 4px 0px 0px #FFD700;
+    @apply inline-flex rounded-[28px] border border-ink/10 bg-concrete px-6 py-4 font-display text-lg font-semibold tracking-tight text-pure;
+    box-shadow: 0 26px 70px -34px rgba(23, 23, 23, 0.58);
   }
 
-  /* Container with brutal border */
   .brutal-container {
-    @apply border-[3px] border-ink bg-pure p-6 md:p-8;
-    box-shadow: 6px 6px 0px 0px #0A0A0A;
+    @apply premium-card p-6 md:p-8;
   }
 
-  /* Text stroke effect */
   .text-stroke {
-    -webkit-text-stroke: 2px #0A0A0A;
-    paint-order: stroke fill;
+    text-shadow: 0 1px 0 rgba(23, 23, 23, 0.14);
   }
 
   .text-stroke-thin {
-    -webkit-text-stroke: 1px #0A0A0A;
-    paint-order: stroke fill;
+    text-shadow: 0 1px 0 rgba(23, 23, 23, 0.08);
   }
 
-  /* Safety badge */
   .safety-badge {
-    @apply inline-flex items-center gap-2 bg-safety border-[3px] border-ink px-3 py-1 font-display text-xs font-bold uppercase;
-    box-shadow: 2px 2px 0px 0px #0A0A0A;
+    @apply inline-flex items-center gap-2 rounded-full border border-safety/20 bg-safety/10 px-3 py-1 font-display text-xs font-semibold uppercase tracking-[0.2em] text-safety-dark;
   }
 
-  /* Divider with road line style */
   .divider-road {
-    height: 6px;
+    height: 1px;
     background: repeating-linear-gradient(
       90deg,
-      #0A0A0A,
-      #0A0A0A 20px,
-      transparent 20px,
-      transparent 40px
+      rgba(23, 23, 23, 0.16),
+      rgba(23, 23, 23, 0.16) 28px,
+      transparent 28px,
+      transparent 56px
     );
   }
 
-  /* Skewed/transform elements */
   .skew-brutal {
-    transform: skew(-4deg);
+    transform: rotate(-2deg);
   }
 
   .skew-brutal > * {
-    transform: skew(4deg);
+    transform: rotate(2deg);
   }
 }
 

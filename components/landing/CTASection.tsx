@@ -1,84 +1,67 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, ArrowRight, CheckCircle, Mail } from "lucide-react";
+import { ArrowRight, BadgeCheck, Clock3, MapPinned } from "lucide-react";
 
-const benefits = [
-  "Registro gratuito",
-  "Sin compromiso", 
-  "Cancelación flexible",
-];
+const microItems = ["Publicacion gratuita", "Alta en minutos", "Disponible en toda Espana"];
 
 export function CTASection() {
   return (
-    <section className="py-20 lg:py-32 bg-safety relative overflow-hidden">
-      {/* Background Pattern - Road Hazard Style */}
-      <div className="absolute top-0 left-0 right-0 h-8 pattern-warning" />
-      <div className="absolute bottom-0 left-0 right-0 h-8 pattern-warning" />
-      
-      {/* Diagonal Lines */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-1/4 w-2 h-full bg-ink transform rotate-12" />
-        <div className="absolute top-0 right-1/4 w-2 h-full bg-ink transform -rotate-12" />
-      </div>
+    <section className="section-shell px-4 pb-20 pt-8 sm:px-6 lg:px-8 lg:pb-28 lg:pt-12">
+      <div className="mx-auto max-w-6xl">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="overflow-hidden rounded-[36px] border border-ink/10 bg-[linear-gradient(135deg,#1f2f2a_0%,#2f343b_55%,#171717_100%)] px-6 py-10 text-pure shadow-[0_36px_110px_-48px_rgba(23,23,23,0.72)] sm:px-8 lg:px-12 lg:py-12"
+        >
+          <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end lg:gap-12">
+            <div>
+              <span className="eyebrow !border-pure/10 !bg-pure/10 !text-pure/70">
+                <MapPinned className="h-4 w-4 text-safety-light" />
+                Empieza hoy en toda Espana
+              </span>
+              <h2 className="mt-6 max-w-3xl text-4xl text-pure sm:text-5xl lg:text-6xl">
+                Saca rentabilidad a tu plaza o deja de pagar parking de mas.
+              </h2>
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-pure/70 sm:text-xl">
+                Regstrate gratis, elige tu camino y empieza a usar una plataforma pensada para monetizar plazas privadas o encontrar una opcion mejor para aparcar.
+              </p>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-ink text-pure border-[3px] border-pure px-4 py-2 font-display font-bold text-sm uppercase tracking-wider mb-8"
-              style={{ boxShadow: '4px 4px 0px 0px #0A0A0A' }}>
-              <MapPin className="w-5 h-5 text-safety" fill="#FFD700" strokeWidth={2.5} />
-              Disponible en toda España
-            </div>
-
-            {/* Headline */}
-            <div className="mb-8">
-              <div className="highway-sign !text-3xl sm:!text-4xl lg:!text-5xl !leading-tight !p-6 md:!p-10 inline-block">
-                <span className="text-safety">¿LISTO PARA</span>
-                <br />
-                <span className="text-pure">EMPEZAR?</span>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <div className="metric-chip !border-pure/10 !bg-pure/10 !text-pure">
+                  <BadgeCheck className="h-4 w-4 text-safety-light" />
+                  <span className="text-pure/80">Registro gratuito</span>
+                </div>
+                <div className="metric-chip !border-pure/10 !bg-pure/10 !text-pure">
+                  <Clock3 className="h-4 w-4 text-safety-light" />
+                  <span className="text-pure/80">Activacion en minutos</span>
+                </div>
               </div>
             </div>
 
-            <p className="font-body text-lg md:text-xl text-ink mb-10 max-w-2xl mx-auto font-medium">
-              Únete a miles de usuarios que ya están ahorrando en parking o generando 
-              ingresos extra con sus plazas.
-            </p>
-
-            {/* Email Form */}
-            <div className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto mb-8">
-              <div className="relative flex-1">
-                <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-concrete" strokeWidth={2.5} />
-                <input
-                  type="email"
-                  placeholder="Tu email"
-                  className="w-full h-14 bg-pure border-[3px] border-ink pl-12 pr-4 font-body text-lg focus:outline-none focus:shadow-[4px_4px_0px_0px_#0A0A0A] transition-shadow"
-                />
-              </div>
-              <a href="https://parking.cerveretadev.es" className="brutal-btn-dark !h-14 !text-base whitespace-nowrap">
-                Empezar gratis
-                <ArrowRight className="w-5 h-5 ml-2" strokeWidth={2.5} />
+            <div className="flex flex-col gap-3 lg:min-w-[18rem]">
+              <a href="https://parking.cerveretadev.es" className="premium-btn justify-center">
+                Publicar mi plaza
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </a>
+              <a href="https://parking.cerveretadev.es" className="premium-btn-secondary justify-center !border-pure/10 !bg-pure/10 !text-pure">
+                Buscar parking
               </a>
             </div>
+          </div>
 
-            {/* Benefits */}
-            <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-ink">
-              {benefits.map((benefit, index) => (
-                <div key={index} className="flex items-center gap-2 bg-pure border-[3px] border-ink px-3 py-2"
-                  style={{ boxShadow: '2px 2px 0px 0px #0A0A0A' }}>
-                  <CheckCircle className="w-5 h-5 text-safety" fill="#FFD700" strokeWidth={2.5} />
-                  <span className="font-display font-bold text-xs uppercase tracking-wider">{benefit}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
+          <div className="mt-8 divider-road opacity-40" />
+
+          <div className="mt-6 flex flex-wrap gap-3">
+            {microItems.map((item) => (
+              <span key={item} className="rounded-full border border-pure/10 px-4 py-2 font-body text-sm text-pure/70">
+                {item}
+              </span>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

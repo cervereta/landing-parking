@@ -1,220 +1,162 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Car, MapPin, Coins, Shield, ArrowRight, Zap } from "lucide-react";
+import { ArrowRight, Building2, CarFront, CheckCircle2, CircleDollarSign, MapPinned, ShieldCheck } from "lucide-react";
+
+const trustItems = [
+  "Publicacion gratuita",
+  "Contrato legal incluido",
+  "Perfiles verificados",
+];
+
+const marketStats = [
+  { label: "Ingreso mensual estimado por plaza", value: "+180 EUR" },
+  { label: "Ahorro frente a parking tradicional", value: "Hasta 50%" },
+];
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen pt-32 pb-20 overflow-hidden bg-pure">
-      {/* Background Pattern - Road Lines */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-1/4 left-0 right-0 h-4 pattern-road-lines" />
-        <div className="absolute top-1/2 left-0 right-0 h-4 pattern-road-lines" />
-        <div className="absolute top-3/4 left-0 right-0 h-4 pattern-road-lines" />
-      </div>
+    <section className="section-shell px-4 pb-16 pt-32 sm:px-6 lg:px-8 lg:pb-24 lg:pt-40">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[32rem] bg-[radial-gradient(circle_at_top_right,rgba(35,68,60,0.16),transparent_32%),radial-gradient(circle_at_left,rgba(214,169,40,0.18),transparent_30%)]" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-[linear-gradient(180deg,transparent,rgba(252,251,248,0.92))]" />
 
-      {/* Diagonal Warning Stripes - Corner */}
-      <div className="absolute -top-20 -right-20 w-64 h-64 pattern-warning opacity-20 rotate-45" />
-      <div className="absolute -bottom-20 -left-20 w-48 h-48 pattern-diagonal opacity-20 rotate-12" />
+      <div className="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+        <motion.div
+          initial={{ opacity: 0, y: 32 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="max-w-3xl"
+        >
+          <span className="eyebrow mb-6">
+            <MapPinned className="h-4 w-4 text-safety" />
+            Parking privado para ganar mas o pagar menos
+          </span>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left Column - Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="relative"
-          >
-            {/* Safety Badge */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.3 }}
-              className="mb-6"
-            >
-              <span className="safety-badge">
-                <Zap className="w-4 h-4" fill="#0A0A0A" />
-                Alquiler de plazas privadas
-              </span>
-            </motion.div>
+          <h1 className="max-w-3xl text-5xl leading-[0.95] text-ink sm:text-6xl lg:text-7xl">
+            Gana dinero con tu plaza.
+            <span className="mt-2 block text-concrete">Encuentra parking privado sin pagar de mas.</span>
+          </h1>
 
-            {/* Main Headline - Highway Sign Style */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
-              className="mb-8"
-            >
-              <div className="highway-sign !text-3xl sm:!text-4xl lg:!text-5xl !leading-tight !p-6 md:!p-8 inline-block">
-                <span className="text-safety">TU PLAZA</span>
-                <br />
-                <span className="text-pure">TU DINERO</span>
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-steel sm:text-xl">
+            Publica una plaza que no usas o reserva una cerca de ti. ParkCar conecta propietarios y conductores con contrato legal, perfiles verificados y un proceso claro de principio a fin.
+          </p>
+
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a href="https://parking.cerveretadev.es" className="premium-btn group">
+              Quiero publicar mi plaza
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            </a>
+            <a href="https://parking.cerveretadev.es" className="premium-btn-secondary">
+              Buscar parking
+            </a>
+          </div>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            {trustItems.map((item) => (
+              <div key={item} className="metric-chip">
+                <CheckCircle2 className="h-4 w-4 text-petrol" />
+                <span className="font-body text-sm font-medium text-ink/80">{item}</span>
               </div>
-            </motion.div>
+            ))}
+          </div>
+        </motion.div>
 
-            {/* Subheadline */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.5 }}
-              className="text-lg md:text-xl font-body font-medium text-concrete max-w-lg mb-8 leading-relaxed border-l-[6px] border-safety pl-6"
-            >
-              Conectamos propietarios de plazas de parking con personas que necesitan aparcar. 
-              <strong className="text-ink"> Contrato legal incluido.</strong>
-            </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 32 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0.12, ease: "easeOut" }}
+          className="relative"
+        >
+          <div className="absolute -left-8 top-10 hidden h-28 w-28 rounded-full bg-safety/18 blur-3xl lg:block" />
+          <div className="absolute -right-6 bottom-6 hidden h-36 w-36 rounded-full bg-petrol/18 blur-3xl lg:block" />
 
-            {/* CTAs */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-              className="flex flex-col sm:flex-row gap-4 mb-10"
-            >
-              <a href="https://parking.cerveretadev.es" className="brutal-btn !text-base !py-4 !px-8 group">
-                <Coins className="w-5 h-5 mr-3" strokeWidth={2.5} />
-                Quiero alquilar MI PLAZA
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" strokeWidth={2.5} />
-              </a>
-              <a href="https://parking.cerveretadev.es" className="brutal-btn-secondary !text-base !py-4 !px-8 group">
-                <Car className="w-5 h-5 mr-3" strokeWidth={2.5} />
-                Buscar parking
-              </a>
-            </motion.div>
+          <div className="premium-card relative overflow-hidden p-5 sm:p-6 lg:p-7">
+            <div className="absolute inset-x-0 top-0 h-24 bg-[linear-gradient(180deg,rgba(214,169,40,0.12),transparent)]" />
 
-            {/* Trust Indicators */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.5 }}
-              className="flex flex-wrap gap-4"
-            >
-              {[
-                { icon: Shield, text: "Contrato legal" },
-                { icon: MapPin, text: "Toda España" },
-              ].map((item, idx) => (
-                <div 
-                  key={idx}
-                  className="flex items-center gap-2 bg-pure border-[3px] border-ink px-4 py-2"
-                  style={{ boxShadow: '3px 3px 0px 0px #0A0A0A' }}
-                >
-                  <item.icon className="w-5 h-5 text-safety" fill="#FFD700" strokeWidth={2.5} />
-                  <span className="font-display font-bold text-xs uppercase tracking-wider">{item.text}</span>
+            <div className="relative rounded-[28px] border border-ink/10 bg-concrete p-6 text-pure shadow-[0_30px_90px_-42px_rgba(23,23,23,0.7)]">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                    <p className="font-body text-sm font-medium uppercase tracking-[0.24em] text-pure/50">
+                    Vista de oportunidad
+                  </p>
+                  <h2 className="mt-3 max-w-sm text-3xl leading-tight text-pure">
+                    Convierte una plaza vacia en ingresos o aparca mejor cada semana.
+                  </h2>
                 </div>
-              ))}
-            </motion.div>
-          </motion.div>
+                <span className="rounded-full border border-pure/10 bg-pure/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-safety-light">
+                  Oportunidad activa
+                </span>
+              </div>
 
-          {/* Right Column - Visual */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-            className="relative"
-          >
-            {/* Main Visual Container */}
-            <div className="brutal-container relative bg-concrete !p-0 overflow-hidden">
-              {/* Pattern Header */}
-              <div className="h-8 pattern-diagonal" />
-              
-              {/* Content */}
-              <div className="p-6 md:p-10">
-                {/* Stats Grid */}
-                <div className="grid grid-cols-2 gap-4 mb-8">
-                  {[
-                    { value: "50%", label: "Más barato" },
-                    { value: "10K+", label: "Plazas activas" },
-                    { value: "4.9", label: "Valoración" },
-                    { value: "0€", label: "Sin comisiones" },
-                  ].map((stat, idx) => (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.5 + idx * 0.1, duration: 0.3 }}
-                      className="brutal-card bg-pure p-4 text-center"
-                    >
-                      <div className="font-display font-black text-2xl md:text-3xl text-safety text-stroke-thin">
-                        {stat.value}
+              <div className="mt-8 grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
+                <div className="rounded-[24px] border border-pure/10 bg-pure/5 p-5">
+                  <div className="flex items-center justify-between text-pure/60">
+                    <span className="font-body text-sm">Centro de ciudad</span>
+                    <MapPinned className="h-4 w-4 text-safety-light" />
+                  </div>
+
+                  <div className="mt-6 rounded-[22px] border border-pure/10 bg-[linear-gradient(180deg,rgba(252,251,248,0.08),rgba(252,251,248,0.02))] p-4">
+                    <div className="grid grid-cols-3 gap-3">
+                      {[0, 1, 2, 3, 4, 5].map((slot) => (
+                        <div
+                          key={slot}
+                          className={`flex h-20 items-end justify-center rounded-[18px] border border-pure/10 ${slot === 1 ? "bg-safety/20" : "bg-pure/5"}`}
+                        >
+                          <div className={`mb-3 flex h-10 w-10 items-center justify-center rounded-2xl ${slot === 1 ? "bg-safety text-ink" : "bg-pure/10 text-pure/70"}`}>
+                            <CarFront className="h-5 w-5" />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="mt-4 flex items-center justify-between rounded-[18px] border border-safety/20 bg-safety/10 px-4 py-3">
+                      <div>
+                        <p className="text-xs uppercase tracking-[0.22em] text-safety-light/75">Plaza destacada</p>
+                        <p className="mt-1 font-body text-base font-semibold text-pure">Garaje privado listo para alquilar</p>
                       </div>
-                      <div className="font-display font-bold text-xs uppercase tracking-wider text-concrete mt-1">
-                        {stat.label}
-                      </div>
-                    </motion.div>
+                      <Building2 className="h-5 w-5 text-safety-light" />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  {marketStats.map((item) => (
+                    <div key={item.label} className="rounded-[22px] border border-pure/10 bg-pure/5 p-5">
+                      <p className="font-body text-sm text-pure/60">{item.label}</p>
+                      <p className="mt-4 text-3xl text-pure">{item.value}</p>
+                    </div>
                   ))}
-                </div>
 
-                {/* Visual Illustration - Parking Theme */}
-                <div className="relative h-48 bg-pure border-[3px] border-ink overflow-hidden">
-                  {/* Road */}
-                  <div className="absolute bottom-0 left-0 right-0 h-16 bg-concrete" />
-                  <div className="absolute bottom-6 left-0 right-0 h-1 pattern-road-lines" />
-                  
-                  {/* Parking Lines */}
-                  <div className="absolute bottom-0 left-1/4 w-1 h-16 bg-safety" />
-                  <div className="absolute bottom-0 right-1/4 w-1 h-16 bg-safety" />
-
-                  {/* Car */}
-                  <motion.div
-                    initial={{ x: -100 }}
-                    animate={{ x: 0 }}
-                    transition={{ delay: 0.8, duration: 0.5, type: "spring" }}
-                    className="absolute bottom-4 left-1/3 transform -translate-x-1/2"
-                  >
-                    <div className="w-24 h-12 bg-safety border-[3px] border-ink relative">
-                      <div className="absolute -top-4 left-2 right-2 h-5 bg-safety-light border-[3px] border-ink border-b-0" />
-                      <Car className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-10 h-10 text-ink" strokeWidth={2.5} />
+                    <div className="rounded-[22px] border border-petrol/20 bg-petrol/80 p-5">
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-11 w-11 items-center justify-center rounded-full bg-pure/10">
+                        <ShieldCheck className="h-5 w-5 text-safety-light" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-pure">Confianza integrada</p>
+                        <p className="mt-1 font-body text-sm text-pure/70">Contrato y verificacion para alquilar con menos riesgo.</p>
+                      </div>
                     </div>
-                    {/* Wheels */}
-                    <div className="absolute -bottom-2 left-1 w-5 h-5 bg-ink border-2 border-pure" />
-                    <div className="absolute -bottom-2 right-1 w-5 h-5 bg-ink border-2 border-pure" />
-                  </motion.div>
-
-                  {/* Location Pin */}
-                  <motion.div
-                    initial={{ y: -20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 1, duration: 0.3 }}
-                    className="absolute top-4 right-8"
-                  >
-                    <div className="w-12 h-12 bg-warning border-[3px] border-ink flex items-center justify-center relative">
-                      <MapPin className="w-6 h-6 text-pure" fill="white" strokeWidth={2.5} />
-                      <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-[8px] border-r-[8px] border-t-[12px] border-l-transparent border-r-transparent border-t-warning" />
-                    </div>
-                  </motion.div>
-
-                  {/* Floating Coin */}
-                  <motion.div
-                    animate={{ y: [0, -8, 0] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute top-6 left-6"
-                  >
-                    <div className="w-14 h-14 bg-safety border-[3px] border-ink rounded-full flex items-center justify-center">
-                      <span className="font-display font-black text-xl">€</span>
-                    </div>
-                  </motion.div>
+                  </div>
                 </div>
               </div>
-
-              {/* Pattern Footer */}
-              <div className="h-6 pattern-warning" />
             </div>
 
-            {/* Floating Badge */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.2, duration: 0.3 }}
-              className="absolute -bottom-4 -right-4 brutal-card bg-safety !p-3"
-            >
-              <div className="font-display font-black text-sm uppercase">Disponible 24/7</div>
-            </motion.div>
-          </motion.div>
-        </div>
+            <div className="relative mt-5 grid gap-3 sm:grid-cols-3">
+              {[
+                { icon: CircleDollarSign, label: "Mas rentabilidad" },
+                { icon: CarFront, label: "Menos vueltas para aparcar" },
+                { icon: ShieldCheck, label: "Mas confianza al cerrar" },
+              ].map((item) => (
+                <div key={item.label} className="rounded-[22px] border border-ink/10 bg-pure/70 px-4 py-4 backdrop-blur">
+                  <item.icon className="h-5 w-5 text-safety-dark" />
+                  <p className="mt-3 font-body text-sm font-semibold text-ink">{item.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
       </div>
-
-      {/* Bottom Road Line */}
-      <div className="absolute bottom-0 left-0 right-0 h-6 pattern-diagonal" />
     </section>
   );
 }

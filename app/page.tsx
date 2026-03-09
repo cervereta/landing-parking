@@ -1,5 +1,5 @@
 import { Header } from "@/components/layout/Header";
-import { Hero, DualFeatures, HowItWorks, TrustSection, CTASection, Footer } from "@/components/landing";
+import { Hero, Stats, DualFeatures, HowItWorks, TrustSection, Testimonials, CTASection, Footer } from "@/components/landing";
 
 export default function Home() {
   return (
@@ -7,9 +7,11 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <Stats />
         <DualFeatures />
         <HowItWorks />
         <TrustSection />
+        <Testimonials />
         <CTASection />
         <Footer />
       </main>

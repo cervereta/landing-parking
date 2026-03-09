@@ -1,154 +1,78 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { UserPlus, Search, FileCheck, Key, ArrowRight, Shield } from "lucide-react";
+import { FileCheck2, Search, UserRoundPlus, Wallet } from "lucide-react";
 
 const steps = [
   {
-    icon: UserPlus,
-    title: "REGÍSTRATE",
-    description: "Crea tu cuenta en menos de 2 minutos. Solo necesitas email y teléfono.",
-    color: "safety",
     number: "01",
+    icon: UserRoundPlus,
+    title: "Crea tu cuenta",
+    description: "Registrate en pocos minutos y elige si quieres publicar una plaza o empezar a buscar parking.",
   },
   {
-    icon: Search,
-    title: "ENCUENTRA",
-    description: "Busca la plaza perfecta en tu zona o publica la tuya para empezar a ganar.",
-    color: "ink",
     number: "02",
+    icon: Search,
+    title: "Publica o busca",
+    description: "Activa tu anuncio o compara plazas segun ubicacion, disponibilidad, horario y precio.",
   },
   {
-    icon: FileCheck,
-    title: "CONTRATO",
-    description: "Generamos automáticamente un contrato legal que protege a ambas partes.",
-    color: "safety",
     number: "03",
+    icon: FileCheck2,
+    title: "Confirma con seguridad",
+    description: "Cierra el acuerdo con contrato legal y un proceso pensado para que todo quede mas claro.",
   },
   {
-    icon: Key,
-    title: "DISFRUTA",
-    description: "Recibe las llaves y empieza a usar tu plaza de parking segura.",
-    color: "ink",
     number: "04",
+    icon: Wallet,
+    title: "Empieza a usar o a cobrar",
+    description: "Empieza a generar ingresos con tu plaza o aparca con mas tranquilidad desde el primer dia.",
   },
 ];
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-20 lg:py-32 bg-safety relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-0 right-0 h-full">
-          {[...Array(10)].map((_, i) => (
-            <div key={i} className="h-20 border-b-[4px] border-ink" />
-          ))}
-        </div>
-      </div>
-
-      {/* Corner Decorations */}
-      <div className="absolute top-0 left-0 w-32 h-32 pattern-warning" />
-      <div className="absolute bottom-0 right-0 w-32 h-32 pattern-warning rotate-180" />
-
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
+    <section id="how-it-works" className="section-shell px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+      <div className="mx-auto max-w-7xl">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="section-copy text-center"
         >
-          <span className="inline-block bg-ink text-pure border-[3px] border-pure px-4 py-2 font-display font-bold text-sm uppercase tracking-widest mb-6"
-            style={{ boxShadow: '4px 4px 0px 0px #0A0A0A' }}>
-            RUTA A SEGUIR
-          </span>
-          <h2 className="font-display font-black text-4xl md:text-5xl lg:text-6xl uppercase text-ink mb-6">
-            ¿Cómo funciona?
+          <span className="section-marker">Como funciona</span>
+          <h2 className="mt-6 text-4xl text-ink sm:text-5xl lg:text-6xl">
+            Empieza en minutos y sin complicaciones.
           </h2>
-          <p className="font-body text-lg md:text-xl text-concrete max-w-2xl mx-auto">
-            En 4 simples pasos, empieza a ganar dinero o encuentra tu plaza ideal
+          <p className="mt-5 text-lg leading-8 text-steel sm:text-xl">
+            El proceso esta pensado para reducir friccion: publicas, buscas, cierras el acuerdo y empiezas a usar la plataforma con rapidez.
           </p>
         </motion.div>
 
-        {/* Steps Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4">
+        <div className="mt-14 grid gap-5 lg:grid-cols-4">
           {steps.map((step, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 40 }}
+            <motion.article
+              key={step.number}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative"
+              transition={{ duration: 0.4, delay: index * 0.08 }}
+              className="premium-card p-6 sm:p-7"
             >
-              {/* Road Sign Style Card */}
-              <div className={`brutal-container !p-0 h-full ${step.color === 'safety' ? '!bg-pure' : '!bg-ink'}`}>
-                {/* Step Number Badge */}
-                <div className={`border-b-[3px] border-ink p-4 ${step.color === 'safety' ? 'bg-safety' : 'bg-concrete'}`}>
-                  <div className="flex items-center justify-between">
-                    <span className={`font-display font-black text-4xl ${step.color === 'safety' ? 'text-ink' : 'text-pure'}`}>
-                      {step.number}
-                    </span>
-                    {/* Connecting Arrow (hidden on mobile and last item) */}
-                    {index < steps.length - 1 && (
-                      <div className="hidden lg:block absolute -right-3 top-1/2 transform -translate-y-1/2 z-10">
-                        <ArrowRight className="w-8 h-8 text-ink" strokeWidth={3} />
-                      </div>
-                    )}
-                  </div>
+              <div className="flex items-center justify-between">
+                <span className="font-display text-4xl text-safety-dark">{step.number}</span>
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-petrol/10 text-petrol">
+                  <step.icon className="h-5 w-5" />
                 </div>
-
-                {/* Icon */}
-                <div className="p-6 pb-0">
-                  <div className={`w-16 h-16 border-[3px] border-ink flex items-center justify-center mb-4 ${
-                    step.color === 'safety' ? 'bg-safety' : 'bg-pure'
-                  }`}>
-                    <step.icon className={`w-8 h-8 ${step.color === 'safety' ? 'text-ink' : 'text-ink'}`} strokeWidth={2.5} />
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-6 pt-4">
-                  <h3 className={`font-display font-black text-xl uppercase mb-3 ${
-                    step.color === 'safety' ? 'text-ink' : 'text-pure'
-                  }`}>
-                    {step.title}
-                  </h3>
-                  <p className={`font-body leading-relaxed ${
-                    step.color === 'safety' ? 'text-concrete' : 'text-concrete'
-                  }`}>
-                    {step.description}
-                  </p>
-                </div>
-
-                {/* Bottom accent */}
-                <div className={`h-3 border-t-[3px] border-ink ${
-                  step.color === 'safety' ? 'bg-concrete' : 'bg-safety'
-                }`} />
               </div>
-            </motion.div>
+
+              <h3 className="mt-10 text-2xl text-ink">{step.title}</h3>
+              <p className="mt-4 font-body text-base leading-7 text-steel">{step.description}</p>
+            </motion.article>
           ))}
         </div>
-
-        {/* Trust Note */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5, duration: 0.5 }}
-          className="mt-16 text-center"
-        >
-          <div className="inline-flex items-center gap-3 bg-ink text-pure border-[3px] border-pure px-6 py-4 font-display font-bold text-sm uppercase tracking-wider"
-            style={{ boxShadow: '4px 4px 0px 0px #0A0A0A' }}>
-            <Shield className="w-5 h-5 text-safety" fill="#FFD700" strokeWidth={2.5} />
-            Todos los alquileres incluyen contrato legal y seguro de responsabilidad civil
-          </div>
-        </motion.div>
       </div>
-
-      {/* Bottom border */}
-      <div className="absolute bottom-0 left-0 right-0 h-4 bg-ink" />
     </section>
   );
 }

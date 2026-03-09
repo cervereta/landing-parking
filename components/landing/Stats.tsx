@@ -1,63 +1,52 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { CountUp } from '@/components/ui/CountUp';
+import { BadgeCheck, MapPin, ShieldCheck, Star } from 'lucide-react';
+
+const items = [
+  {
+    icon: BadgeCheck,
+    value: '+10.000',
+    label: 'usuarios ya registrados',
+  },
+  {
+    icon: Star,
+    value: '4.9/5',
+    label: 'valoracion media de la experiencia',
+  },
+  {
+    icon: ShieldCheck,
+    value: '100%',
+    label: 'acuerdos con contrato legal',
+  },
+  {
+    icon: MapPin,
+    value: 'Toda',
+    label: 'Espana disponible',
+  },
+];
 
 export const Stats = () => {
-    return (
-        <section className="py-10 bg-white border-y border-sky-100">
-            <div className="container mx-auto px-4">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center"
-                    >
-                        <p className="text-4xl font-bold text-sky-600 mb-1">
-                            <CountUp end={50000} />+
-                        </p>
-                        <p className="text-slate-600 font-medium">Usuarios Activos</p>
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.1 }}
-                        className="text-center"
-                    >
-                        <p className="text-4xl font-bold text-sky-600 mb-1">
-                            <CountUp end={120} />+
-                        </p>
-                        <p className="text-slate-600 font-medium">Ciudades</p>
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                        className="text-center"
-                    >
-                        <p className="text-4xl font-bold text-sky-600 mb-1">
-                            <CountUp end={8500} />
-                        </p>
-                        <p className="text-slate-600 font-medium">Plazas Disponibles</p>
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.3 }}
-                        className="text-center"
-                    >
-                        <p className="text-4xl font-bold text-sky-600 mb-1">4.9/5</p>
-                        <p className="text-slate-600 font-medium">Valoración Media</p>
-                    </motion.div>
-                </div>
-            </div>
-        </section>
-    );
+  return (
+    <section className="px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
+      <div className="mx-auto max-w-7xl">
+        <div className="glass-panel grid gap-3 p-3 sm:grid-cols-2 lg:grid-cols-4 lg:p-4">
+          {items.map((item, index) => (
+            <motion.div
+              key={item.label}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.35, delay: index * 0.08 }}
+              className="rounded-[24px] border border-ink/10 bg-pure/75 px-5 py-5"
+            >
+              <item.icon className="h-5 w-5 text-petrol" />
+              <p className="mt-4 text-2xl text-ink">{item.value}</p>
+              <p className="mt-2 font-body text-sm text-steel">{item.label}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };

@@ -1,28 +1,28 @@
 import type { Metadata } from "next";
-import { Lexend_Mega, Space_Grotesk } from 'next/font/google';
+import { Manrope, Sora } from 'next/font/google';
 import "./globals.css";
 
-const lexendMega = Lexend_Mega({
+const sora = Sora({
   subsets: ["latin"],
   variable: "--font-display",
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
-const spaceGrotesk = Space_Grotesk({
+const manrope = Manrope({
   subsets: ["latin"],
   variable: "--font-body",
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
-  title: "PARKCAR - Alquiler de Plazas de Parking",
-  description: "Gana dinero con tu plaza de parking o alquila al mejor precio. Contrato seguro entre particulares en toda España.",
+  title: "PARKCAR - Gana dinero con tu plaza o aparca por menos",
+  description: "Publica tu plaza gratis o encuentra parking privado a mejor precio. Contrato legal, perfiles verificados y disponible en toda Espana.",
   keywords: "parking, aparcamiento, alquiler parking, plaza parking, parking privado, alquiler garaje, ParkCar, España",
   openGraph: {
     type: "website",
     locale: "es_ES",
-    title: "PARKCAR - Alquiler de Plazas de Parking",
-    description: "Alquila plazas de parking privadas en España. Más barato que los parkings públicos, con contrato legal.",
+    title: "PARKCAR - Gana dinero con tu plaza o aparca por menos",
+    description: "Publica tu plaza gratis o encuentra parking privado a mejor precio con contrato legal y perfiles verificados.",
     siteName: "PARKCAR",
   },
 };
@@ -34,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`${lexendMega.variable} ${spaceGrotesk.variable} font-body antialiased min-h-screen bg-asphalt text-ink`}>
+      <body className={`${sora.variable} ${manrope.variable} font-body antialiased min-h-screen bg-ivory text-ink`}>
         {children}
       </body>
     </html>

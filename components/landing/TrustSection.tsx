@@ -1,141 +1,80 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Shield, FileText, Lock, Users, Star } from "lucide-react";
+import { BadgeCheck, FileText, Headset, ShieldCheck, Star } from "lucide-react";
 
-const trustIndicators = [
+const pillars = [
   {
     icon: FileText,
-    title: "CONTRATO LEGAL",
-    description: "Generamos automáticamente un contrato de arrendamiento válido que protege a ambas partes.",
+    title: "Contrato legal automatizado",
+    description: "El acuerdo queda mejor definido desde el inicio para que propietario y conductor cierren con mas claridad.",
   },
   {
-    icon: Lock,
-    title: "PAGOS SEGUROS",
-    description: "Procesamos los pagos de forma segura. El propietario recibe el dinero cuando el inquilino ocupa la plaza.",
+    icon: BadgeCheck,
+    title: "Perfiles y actividad verificados",
+    description: "Mas trazabilidad, mas confianza y menos incertidumbre antes de aceptar una reserva o un alquiler.",
   },
   {
-    icon: Shield,
-    title: "VERIFICACIÓN",
-    description: "Todos los usuarios pasan por un proceso de verificación para garantizar la seguridad.",
+    icon: ShieldCheck,
+    title: "Proceso mas seguro",
+    description: "Cada paso esta pensado para reducir dudas, mejorar la transparencia y facilitar la decision.",
   },
   {
-    icon: Users,
-    title: "COMUNIDAD",
-    description: "Sistema de valoraciones y reseñas para que siempre sepas con quién tratas.",
+    icon: Headset,
+    title: "Soporte y reputacion",
+    description: "Resenas, historial y acompanamiento para que la confianza no dependa solo de una primera impresion.",
   },
-];
-
-const stats = [
-  { value: "5K+", label: "Plazas disponibles", suffix: "" },
-  { value: "10K+", label: "Usuarios activos", suffix: "" },
-  { value: "4.9", label: "Valoración media", suffix: "/5" },
-  { value: "50", label: "Ahorro medio", suffix: "%" },
 ];
 
 export function TrustSection() {
   return (
-    <section id="trust" className="py-20 lg:py-32 bg-concrete text-pure relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 left-0 right-0 h-full">
-          {[...Array(8)].map((_, i) => (
-            <div key={i} className="h-24 border-b-[4px] border-pure" />
-          ))}
-        </div>
-      </div>
-
-      {/* Warning Stripes Corner */}
-      <div className="absolute -top-10 -right-10 w-40 h-40 pattern-warning rotate-45" />
-
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Stats Row */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-20"
-        >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.4 }}
-              className="brutal-card bg-pure text-ink text-center p-6 md:p-8"
-            >
-              <div className="font-display font-black text-3xl md:text-4xl lg:text-5xl text-safety text-stroke-thin mb-2">
-                {stat.value}
-                <span className="text-concrete text-2xl md:text-3xl">{stat.suffix}</span>
-              </div>
-              <div className="font-display font-bold text-xs md:text-sm uppercase tracking-wider text-concrete">
-                {stat.label}
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Trust Grid */}
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Left - Title */}
+    <section id="trust" className="section-shell px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+      <div className="mx-auto max-w-7xl overflow-hidden rounded-[36px] bg-concrete px-6 py-8 text-pure sm:px-8 lg:px-10 lg:py-10">
+        <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start lg:gap-12">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="flex flex-col justify-center"
+            className="lg:sticky lg:top-28"
           >
-            <span className="section-marker mb-6 !bg-warning !text-pure">SEGURIDAD MÁXIMA</span>
-            
-            <h2 className="font-display font-black text-4xl md:text-5xl uppercase mb-6 leading-tight">
-              Tu seguridad es<br />
-              <span className="text-safety text-stroke">PRIORIDAD</span>
+            <span className="eyebrow !border-pure/10 !bg-pure/10 !text-pure/70">Confianza real</span>
+            <h2 className="mt-6 text-4xl text-pure sm:text-5xl lg:text-6xl">
+              Cierra acuerdos con mas confianza desde el primer paso.
             </h2>
-            
-            <p className="font-body text-lg text-concrete mb-8 leading-relaxed border-l-[6px] border-safety pl-6">
-              En PARKCAR nos tomamos muy en serio la seguridad de tus transacciones. 
-              Por eso hemos implementado múltiples capas de protección para que puedas 
-              alquilar con total tranquilidad.
+            <p className="mt-6 max-w-xl text-lg leading-8 text-pure/70 sm:text-xl">
+              Cuando hay dinero, acceso a una plaza y trato entre particulares, la confianza importa. Por eso ParkCar pone claridad, contrato y verificacion en el centro de la experiencia.
             </p>
 
-            {/* Rating */}
-            <div className="flex items-center gap-2 bg-pure border-[3px] border-ink px-4 py-3 w-fit"
-              style={{ boxShadow: '3px 3px 0px 0px #0A0A0A' }}>
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-6 h-6 text-safety" fill="#FFD700" strokeWidth={2.5} />
-              ))}
-              <span className="font-display font-black text-xl text-ink ml-2">4.9/5</span>
-              <span className="font-body text-sm text-concrete ml-2">2.000+ opiniones</span>
+            <div className="mt-8 premium-card-dark border-pure/10 bg-pure/5 p-6">
+              <div className="flex items-center gap-1 text-safety-light">
+                {Array.from({ length: 5 }).map((_, index) => (
+                  <Star key={index} className="h-4 w-4 fill-current" />
+                ))}
+              </div>
+              <p className="mt-5 text-2xl text-pure">Mas seguridad para monetizar o reservar sin improvisar.</p>
+              <p className="mt-3 font-body text-sm leading-7 text-pure/60">
+                La plataforma combina contrato, verificacion y reputacion para que cada operacion se sienta mas seria, mas clara y mas confiable.
+              </p>
             </div>
           </motion.div>
 
-          {/* Right - Trust Cards */}
-          <div className="grid sm:grid-cols-2 gap-4">
-            {trustIndicators.map((item, index) => (
-              <motion.div
-                key={index}
+          <div className="grid gap-4 sm:grid-cols-2">
+            {pillars.map((item, index) => (
+              <motion.article
+                key={item.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.4 }}
-                className={`brutal-card p-6 ${index % 2 === 0 ? 'bg-pure text-ink' : 'bg-safety text-ink'}`}
+                transition={{ duration: 0.4, delay: index * 0.08 }}
+                className="rounded-[28px] border border-pure/10 bg-pure/5 p-6 backdrop-blur"
               >
-                <div className={`w-14 h-14 border-[3px] border-ink flex items-center justify-center mb-4 ${
-                  index % 2 === 0 ? 'bg-safety' : 'bg-pure'
-                }`}>
-                  <item.icon className="w-7 h-7 text-ink" strokeWidth={2.5} />
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-safety/20 text-safety-light">
+                  <item.icon className="h-5 w-5" />
                 </div>
-                <h3 className="font-display font-black text-sm uppercase tracking-wider mb-3">
-                  {item.title}
-                </h3>
-                <p className={`font-body text-sm leading-relaxed ${
-                  index % 2 === 0 ? 'text-concrete' : 'text-concrete'
-                }`}>
-                  {item.description}
-                </p>
-              </motion.div>
+                <h3 className="mt-8 text-2xl text-pure">{item.title}</h3>
+                <p className="mt-4 font-body text-base leading-7 text-pure/70">{item.description}</p>
+              </motion.article>
             ))}
           </div>
         </div>

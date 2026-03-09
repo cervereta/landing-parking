@@ -1,161 +1,135 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Home, Car, TrendingUp, Shield, Calendar, CheckCircle, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, CalendarRange, CircleDollarSign, MapPinCheckInside, ShieldCheck, WalletCards } from "lucide-react";
 
-const propietariosFeatures = [
-  { icon: TrendingUp, text: "Genera ingresos pasivos" },
-  { icon: Shield, text: "Contrato legal incluido" },
-  { icon: Calendar, text: "Tú decides cuándo alquilar" },
+const ownerFeatures = [
+  "Publica gratis y activa tu plaza en minutos",
+  "Tu decides precio, disponibilidad y condiciones",
+  "Contrato listo para cerrar con mas tranquilidad",
 ];
 
-const usuariosFeatures = [
-  { icon: CheckCircle, text: "Hasta 50% más barato" },
-  { icon: Shield, text: "Plazas verificadas" },
-  { icon: Calendar, text: "Por horas, días o meses" },
+const driverFeatures = [
+  "Compara plazas privadas en zonas clave",
+  "Reduce lo que pagas frente al parking tradicional",
+  "Encuentra una opcion mas comoda para tu rutina",
 ];
 
 export function DualFeatures() {
   return (
-    <section id="features" className="py-20 lg:py-32 bg-pure relative overflow-hidden">
-      {/* Background Road Lines */}
-      <div className="absolute top-0 left-0 right-0 h-4 pattern-diagonal" />
-      
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
+    <section id="features" className="section-shell px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+      <div className="mx-auto max-w-7xl">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="section-copy text-center"
         >
-          <span className="section-marker mb-4">ELIGE TU ROL</span>
-          <h2 className="font-display font-black text-4xl md:text-5xl lg:text-6xl uppercase mt-4 mb-6">
-            ¿Cómo usas <span className="text-safety text-stroke">PARKCAR</span>?
+          <span className="section-marker">Dos formas de usar ParkCar</span>
+          <h2 className="mt-6 text-4xl text-ink sm:text-5xl lg:text-6xl">
+            Una plataforma para monetizar una plaza o dejar de pagar parking de mas.
           </h2>
-          <p className="font-body text-lg md:text-xl text-concrete max-w-2xl mx-auto border-l-[6px] border-safety pl-6 text-left md:text-center md:border-l-0 md:pl-0">
-            Sea cual sea tu situación, tenemos la solución perfecta para ti
+          <p className="mt-5 text-lg leading-8 text-steel sm:text-xl">
+            Tanto si quieres sacar rentabilidad a una plaza vacia como si necesitas aparcar mejor cada dia, aqui encuentras un camino claro para empezar.
           </p>
         </motion.div>
 
-        {/* Two Columns */}
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-          {/* Propietarios Card */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+        <div className="mt-14 grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
+          <motion.article
+            id="owners"
+            initial={{ opacity: 0, y: 26 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ duration: 0.45 }}
+            className="premium-card relative overflow-hidden p-8 sm:p-10"
           >
-            <div className="brutal-container h-full !bg-concrete !p-0 overflow-hidden group">
-              {/* Header with Icon */}
-              <div className="bg-safety border-b-[3px] border-ink p-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 bg-ink text-pure flex items-center justify-center border-[3px] border-pure">
-                    <Home className="w-8 h-8" strokeWidth={2.5} />
-                  </div>
-                  <div>
-                    <div className="font-display font-black text-2xl uppercase text-ink">PROPIETARIO</div>
-                    <div className="font-body font-bold text-concrete">Gana dinero extra</div>
-                  </div>
+            <div className="absolute inset-x-0 top-0 h-24 bg-[linear-gradient(180deg,rgba(214,169,40,0.12),transparent)]" />
+            <span className="eyebrow relative">Para propietarios</span>
+            <h3 className="relative mt-6 max-w-xl text-3xl text-ink sm:text-4xl">
+              Convierte una plaza vacia en un ingreso extra mes a mes.
+            </h3>
+            <p className="relative mt-5 max-w-xl text-lg leading-8 text-steel">
+              Si tienes una plaza que no usas todos los dias, puedes publicarla gratis, definir tus condiciones y empezar a rentabilizarla sin complicarte.
+            </p>
+
+            <div className="relative mt-8 grid gap-4 sm:grid-cols-3">
+              {[
+                { icon: CircleDollarSign, value: '+180 EUR', label: 'media estimada al mes' },
+                { icon: CalendarRange, value: 'Flexible', label: 'tu eliges cuando alquilar' },
+                { icon: ShieldCheck, value: 'Con contrato', label: 'mas claridad al cerrar' },
+              ].map((item) => (
+                <div key={item.label} className="rounded-[24px] border border-ink/10 bg-ivory/70 p-5">
+                  <item.icon className="h-5 w-5 text-safety-dark" />
+                  <p className="mt-4 text-2xl text-ink">{item.value}</p>
+                  <p className="mt-2 font-body text-sm text-steel">{item.label}</p>
+                </div>
+              ))}
+            </div>
+
+            <ul className="relative mt-8 space-y-4">
+              {ownerFeatures.map((feature) => (
+                <li key={feature} className="flex items-center gap-3 font-body text-base text-ink/80">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-safety/14 text-safety-dark">
+                    <ArrowUpRight className="h-4 w-4" />
+                  </span>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+
+            <a href="https://parking.cerveretadev.es" className="premium-btn mt-10">
+              Publicar mi plaza
+            </a>
+          </motion.article>
+
+          <motion.article
+            id="drivers"
+            initial={{ opacity: 0, y: 26 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.45, delay: 0.08 }}
+            className="premium-card-dark relative overflow-hidden p-8 sm:p-10"
+          >
+            <div className="absolute inset-x-0 top-0 h-24 bg-[linear-gradient(180deg,rgba(228,200,106,0.12),transparent)]" />
+            <span className="eyebrow relative !border-pure/10 !bg-pure/10 !text-pure/70">Para conductores</span>
+            <h3 className="relative mt-6 max-w-lg text-3xl text-pure sm:text-4xl">
+              Encuentra parking privado mejor ubicado, mas comodo y a mejor precio.
+            </h3>
+            <p className="relative mt-5 max-w-lg text-lg leading-8 text-pure/70">
+              Reserva plazas en tu zona para uso diario, mensual o puntual sin depender de parkings impersonales, saturados y caros.
+            </p>
+
+            <div className="relative mt-8 rounded-[28px] border border-pure/10 bg-pure/5 p-5">
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="rounded-[22px] border border-pure/10 bg-pure/5 p-5">
+                  <MapPinCheckInside className="h-5 w-5 text-safety-light" />
+                  <p className="mt-4 text-2xl text-pure">Mas cerca</p>
+                  <p className="mt-2 font-body text-sm text-pure/60">Elige segun barrio, horario y lo que de verdad te conviene.</p>
+                </div>
+                <div className="rounded-[22px] border border-pure/10 bg-pure/5 p-5">
+                  <WalletCards className="h-5 w-5 text-safety-light" />
+                  <p className="mt-4 text-2xl text-pure">Mas ahorro</p>
+                  <p className="mt-2 font-body text-sm text-pure/60">Opciones privadas con mejor equilibrio entre precio, cercania y comodidad.</p>
                 </div>
               </div>
-
-              {/* Content */}
-              <div className="p-6 lg:p-8">
-                <p className="font-body text-lg text-pure mb-8 leading-relaxed">
-                  ¿Tienes una plaza de parking que no usas? Conviértela en una fuente de <strong className="text-safety">ingresos pasivos</strong>.
-                </p>
-
-                {/* Features */}
-                <ul className="space-y-4 mb-8">
-                  {propietariosFeatures.map((feature, index) => (
-                    <motion.li
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.3 + index * 0.1 }}
-                      className="flex items-center gap-4"
-                    >
-                      <div className="w-10 h-10 bg-safety border-[3px] border-ink flex items-center justify-center flex-shrink-0">
-                        <feature.icon className="w-5 h-5 text-ink" strokeWidth={2.5} />
-                      </div>
-                      <span className="font-body text-pure font-medium">{feature.text}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-
-                {/* CTA */}
-                <a href="https://parking.cerveretadev.es" className="w-full brutal-btn !bg-safety group">
-                  Publicar mi plaza
-                  <ArrowUpRight className="w-5 h-5 ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" strokeWidth={2.5} />
-                </a>
-              </div>
-
-              {/* Bottom Pattern */}
-              <div className="h-4 pattern-road-lines" />
             </div>
-          </motion.div>
 
-          {/* Usuarios Card */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <div className="brutal-container h-full !bg-pure !p-0 overflow-hidden group">
-              {/* Header with Icon */}
-              <div className="bg-ink border-b-[3px] border-ink p-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 bg-safety text-ink flex items-center justify-center border-[3px] border-pure">
-                    <Car className="w-8 h-8" strokeWidth={2.5} />
-                  </div>
-                  <div>
-                    <div className="font-display font-black text-2xl uppercase text-pure">USUARIO</div>
-                    <div className="font-body font-bold text-concrete">Ahorra en parking</div>
-                  </div>
-                </div>
-              </div>
+            <ul className="relative mt-8 space-y-4">
+              {driverFeatures.map((feature) => (
+                <li key={feature} className="flex items-center gap-3 font-body text-base text-pure/80">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-pure/10 text-safety-light">
+                    <ArrowUpRight className="h-4 w-4" />
+                  </span>
+                  {feature}
+                </li>
+              ))}
+            </ul>
 
-              {/* Content */}
-              <div className="p-6 lg:p-8">
-                <p className="font-body text-lg text-ink mb-8 leading-relaxed">
-                  ¿Buscas parking diario o mensual? Encuentra plazas privadas al <strong className="text-safety">mejor precio</strong>.
-                </p>
-
-                {/* Features */}
-                <ul className="space-y-4 mb-8">
-                  {usuariosFeatures.map((feature, index) => (
-                    <motion.li
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.4 + index * 0.1 }}
-                      className="flex items-center gap-4"
-                    >
-                      <div className="w-10 h-10 bg-ink border-[3px] border-ink flex items-center justify-center flex-shrink-0">
-                        <feature.icon className="w-5 h-5 text-safety" strokeWidth={2.5} />
-                      </div>
-                      <span className="font-body text-ink font-medium">{feature.text}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-
-                {/* CTA */}
-                <a href="https://parking.cerveretadev.es" className="w-full brutal-btn-dark group">
-                  Buscar parking
-                  <ArrowUpRight className="w-5 h-5 ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" strokeWidth={2.5} />
-                </a>
-              </div>
-
-              {/* Bottom Pattern */}
-              <div className="h-4 pattern-diagonal opacity-50" />
-            </div>
-          </motion.div>
+            <a href="https://parking.cerveretadev.es" className="premium-btn mt-10">
+              Buscar parking
+            </a>
+          </motion.article>
         </div>
       </div>
     </section>

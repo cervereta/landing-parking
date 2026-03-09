@@ -9,23 +9,25 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Neo-brutalist street signage palette
-        asphalt: "#0A0A0A",
-        ink: "#0A0A0A",
-        concrete: "#2A2A2A",
+        asphalt: "#171717",
+        ink: "#171717",
+        concrete: "#2F343B",
+        ivory: "#F5F1E8",
+        steel: "#6E7681",
+        petrol: "#23443C",
         safety: {
-          DEFAULT: "#FFD700",
-          dark: "#E6C200",
-          light: "#FFEC8B",
+          DEFAULT: "#D6A928",
+          dark: "#B68C1B",
+          light: "#E4C86A",
         },
         warning: {
-          DEFAULT: "#FF4444",
-          dark: "#CC3333",
+          DEFAULT: "#B4543A",
+          dark: "#8F3D28",
         },
-        pure: "#FFFFFF",
+        pure: "#FCFBF8",
         stripe: {
-          gray: "#717171",
-          white: "#FFFFFF",
+          gray: "#A8ADB4",
+          white: "#FCFBF8",
           black: "#000000",
         },
       },
@@ -59,11 +61,11 @@ const config: Config = {
         },
       },
       boxShadow: {
-        brutal: "4px 4px 0px 0px #0A0A0A",
-        "brutal-lg": "6px 6px 0px 0px #0A0A0A",
-        "brutal-xl": "8px 8px 0px 0px #0A0A0A",
-        "brutal-safety": "4px 4px 0px 0px #FFD700",
-        "brutal-white": "4px 4px 0px 0px #FFFFFF",
+        brutal: "0 24px 60px -28px rgba(23, 23, 23, 0.35)",
+        "brutal-lg": "0 32px 90px -42px rgba(23, 23, 23, 0.42)",
+        "brutal-xl": "0 40px 120px -52px rgba(23, 23, 23, 0.48)",
+        "brutal-safety": "0 18px 50px -28px rgba(214, 169, 40, 0.45)",
+        "brutal-white": "0 14px 40px -24px rgba(252, 251, 248, 0.75)",
       },
       borderWidth: {
         brutal: "3px",
@@ -78,38 +80,37 @@ const config: Config = {
     }) {
       addComponents({
         '.brutal-card': {
-          border: '3px solid #0A0A0A',
-          boxShadow: '4px 4px 0px 0px #0A0A0A',
-          transition: 'all 0.1s ease',
+          border: '1px solid rgba(23, 23, 23, 0.12)',
+          boxShadow: '0 24px 60px -28px rgba(23, 23, 23, 0.35)',
+          transition: 'all 0.2s ease',
         },
         '.brutal-card:active': {
-          transform: 'translate(2px, 2px)',
-          boxShadow: '2px 2px 0px 0px #0A0A0A',
+          transform: 'translateY(1px)',
+          boxShadow: '0 18px 40px -28px rgba(23, 23, 23, 0.3)',
         },
         '.brutal-btn': {
-          border: '3px solid #0A0A0A',
-          boxShadow: '4px 4px 0px 0px #0A0A0A',
-          transition: 'all 0.1s ease',
+          border: '1px solid rgba(23, 23, 23, 0.12)',
+          boxShadow: '0 18px 50px -28px rgba(23, 23, 23, 0.35)',
+          transition: 'all 0.2s ease',
           fontWeight: '700',
-          textTransform: 'uppercase',
-          letterSpacing: '0.05em',
+          letterSpacing: '0.01em',
         },
         '.brutal-btn:active': {
-          transform: 'translate(4px, 4px)',
-          boxShadow: '0px 0px 0px 0px #0A0A0A',
+          transform: 'translateY(1px)',
+          boxShadow: '0 14px 35px -24px rgba(23, 23, 23, 0.28)',
         },
         '.brutal-btn:hover': {
-          transform: 'translate(-2px, -2px)',
-          boxShadow: '6px 6px 0px 0px #0A0A0A',
+          transform: 'translateY(-1px)',
+          boxShadow: '0 24px 60px -28px rgba(23, 23, 23, 0.35)',
         },
         '.diagonal-stripes': {
-          background: 'repeating-linear-gradient(45deg, #FFD700, #FFD700 10px, #0A0A0A 10px, #0A0A0A 20px)',
+          background: 'repeating-linear-gradient(45deg, rgba(214, 169, 40, 0.9), rgba(214, 169, 40, 0.9) 12px, rgba(23, 23, 23, 0.9) 12px, rgba(23, 23, 23, 0.9) 24px)',
         },
         '.warning-stripes': {
-          background: 'repeating-linear-gradient(45deg, #FF4444, #FF4444 10px, #FFFFFF 10px, #FFFFFF 20px)',
+          background: 'repeating-linear-gradient(45deg, rgba(180, 84, 58, 0.85), rgba(180, 84, 58, 0.85) 12px, rgba(252, 251, 248, 0.9) 12px, rgba(252, 251, 248, 0.9) 24px)',
         },
         '.road-marking': {
-          backgroundImage: 'repeating-linear-gradient(90deg, transparent, transparent 20px, #FFD700 20px, #FFD700 40px)',
+          backgroundImage: 'repeating-linear-gradient(90deg, transparent, transparent 28px, rgba(214, 169, 40, 0.75) 28px, rgba(214, 169, 40, 0.75) 56px)',
         },
       });
     },
