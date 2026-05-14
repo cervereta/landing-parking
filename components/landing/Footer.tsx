@@ -37,7 +37,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_repeat(4,0.7fr)]">
           <div>
-            <h2 className="text-3xl text-[--fog] sm:text-4xl">ParkCar</h2>
+            <h2 className="text-3xl text-[#4A4F57] sm:text-4xl">ParkCar</h2>
             <p className="mt-5 max-w-sm font-body text-base leading-7 text-[--mist]">
               Una forma mas inteligente, segura y rentable de conectar plazas privadas con quienes las necesitan.
             </p>

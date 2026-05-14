@@ -44,7 +44,7 @@ export function HowItWorksCinematic() {
           <span className="section-marker !border-[--hairline] !bg-[--deep-pit]/80 !text-[--mist]">
             Como funciona
           </span>
-          <h2 className="mt-6 text-4xl text-[--fog] sm:text-5xl lg:text-6xl">
+          <h2 className="mt-6 text-4xl text-[#4A4F57] sm:text-5xl lg:text-6xl">
             Empieza en minutos y sin complicaciones.
           </h2>
           <p className="mt-5 text-lg leading-8 text-[--mist] sm:text-xl">

@@ -29,7 +29,7 @@ export function DualFeatures() {
           <span className="section-marker !border-[--hairline] !bg-[--deep-pit]/80 !text-[--mist]">
             Dos formas de usar ParkCar
           </span>
-          <h2 className="mt-6 text-4xl text-[--fog] sm:text-5xl lg:text-6xl">
+          <h2 className="mt-6 text-4xl text-[#4A4F57] sm:text-5xl lg:text-6xl">
             Una plataforma para monetizar una plaza o dejar de pagar parking de mas.
           </h2>
           <p className="mt-5 text-lg leading-8 text-[--mist] sm:text-xl">

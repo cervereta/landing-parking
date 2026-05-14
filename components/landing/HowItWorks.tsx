@@ -42,7 +42,7 @@ export function HowItWorks() {
           className="section-copy text-center"
         >
           <span className="section-marker">Como funciona</span>
-          <h2 className="mt-6 text-4xl text-ink sm:text-5xl lg:text-6xl">
+          <h2 className="mt-6 text-4xl text-[#4A4F57] sm:text-5xl lg:text-6xl">
             Empieza en minutos y sin complicaciones.
           </h2>
           <p className="mt-5 text-lg leading-8 text-steel sm:text-xl">
