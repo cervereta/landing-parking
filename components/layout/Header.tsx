@@ -22,7 +22,7 @@ export const Header = () => {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6 lg:px-8">
-      <div className="glass-panel mx-auto max-w-7xl px-4 py-3 sm:px-5 lg:px-6">
+      <div className="mx-auto max-w-7xl rounded-[28px] border border-[--hairline] bg-[--asphalt]/80 px-4 py-3 backdrop-blur-xl sm:px-5 lg:px-6">
         <div className="flex items-center justify-between gap-4">
           <Link href="/" className="flex shrink-0 items-center group" aria-label="Ir al inicio de ParkCar">
             <div className="relative h-16 w-[172px] md:h-20 md:w-[216px]">
@@ -42,7 +42,7 @@ export const Header = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className="rounded-full px-4 py-2 font-body text-sm font-medium text-ink/70 transition-colors hover:text-ink"
+                className="rounded-full px-4 py-2 font-body text-sm font-medium text-[--mist] transition-colors hover:text-[--fog]"
               >
                 {link.label}
               </Link>
@@ -52,7 +52,7 @@ export const Header = () => {
           <div className="hidden items-center gap-3 md:flex">
             <a
               href="https://parking.cerveretadev.es"
-              className="rounded-full px-4 py-2 font-body text-sm font-medium text-ink/70 transition-colors hover:text-ink"
+              className="rounded-full px-4 py-2 font-body text-sm font-medium text-[--mist] transition-colors hover:text-[--fog]"
             >
               Entrar
             </a>
@@ -73,14 +73,14 @@ export const Header = () => {
         </div>
 
         {isMenuOpen && (
-          <div className="mt-4 border-t border-ink/10 pt-4 md:hidden">
+          <div className="mt-4 border-t border-[--hairline] pt-4 md:hidden">
             <nav className="flex flex-col gap-2">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="rounded-2xl border border-ink/10 bg-pure/70 px-4 py-3 font-body text-sm font-medium text-ink/80"
+                  className="rounded-2xl border border-[--hairline] bg-[--deep-pit]/70 px-4 py-3 font-body text-sm font-medium text-[--mist]"
                 >
                   {link.label}
                 </Link>

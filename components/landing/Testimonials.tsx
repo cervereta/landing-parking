@@ -32,11 +32,13 @@ export const Testimonials = () => {
           transition={{ duration: 0.5 }}
           className="section-copy text-center"
         >
-          <span className="section-marker">Prueba social</span>
-          <h2 className="mt-6 text-4xl text-ink sm:text-5xl lg:text-6xl">
+          <span className="section-marker !border-[--hairline] !bg-[--deep-pit]/80 !text-[--mist]">
+            Prueba social
+          </span>
+          <h2 className="mt-6 text-4xl text-[--fog] sm:text-5xl lg:text-6xl">
             Cuando el ahorro y la comodidad se notan, se nota tambien en la opinion.
           </h2>
-          <p className="mt-5 text-lg leading-8 text-steel sm:text-xl">
+          <p className="mt-5 text-lg leading-8 text-[--mist] sm:text-xl">
             Propietarios y conductores ya usan ParkCar para rentabilizar plazas, ahorrar tiempo y reducir lo que pagan por aparcar.
           </p>
         </motion.div>
@@ -49,26 +51,33 @@ export const Testimonials = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.08 }}
-              className="premium-card p-7"
+              className="rounded-[28px] border border-[--hairline] bg-gradient-to-br from-[--deep-pit] to-transparent p-7"
             >
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-1 text-safety-dark">
+                <div className="flex items-center gap-1 text-[--electric]">
                   {Array.from({ length: 5 }).map((_, starIndex) => (
                     <Star key={starIndex} className="h-4 w-4 fill-current" />
                   ))}
                 </div>
-                <Quote className="h-8 w-8 text-safety/40" />
+                <Quote className="h-8 w-8 text-[--electric]/30" />
               </div>
 
-              <p className="mt-8 text-2xl leading-9 text-ink">&ldquo;{testimonial.quote}&rdquo;</p>
+              <p className="mt-8 font-serif text-2xl italic leading-9 text-[--fog]">
+                &ldquo;{testimonial.quote}&rdquo;
+              </p>
 
               <div className="mt-10 flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-petrol text-sm font-semibold text-pure">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-transparent bg-[--elevated] text-sm font-semibold text-[--fog]"
+                  style={{
+                    borderImage: "linear-gradient(135deg, var(--electric), var(--plasma)) 1",
+                    WebkitMask: "none",
+                  }}
+                >
                   {testimonial.name.slice(0, 2).toUpperCase()}
                 </div>
                 <div>
-                  <p className="font-body text-base font-semibold text-ink">{testimonial.name}</p>
-                  <p className="font-body text-sm text-steel">{testimonial.role}</p>
+                  <p className="font-body text-base font-semibold text-[--fog]">{testimonial.name}</p>
+                  <p className="font-body text-sm text-[--mist]">{testimonial.role}</p>
                 </div>
               </div>
             </motion.article>

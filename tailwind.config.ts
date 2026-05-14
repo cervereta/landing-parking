@@ -30,6 +30,10 @@ const config: Config = {
           white: "#FCFBF8",
           black: "#000000",
         },
+        fog: "#e2e8f0",
+        mist: "#94a3b8",
+        electric: "#6366f1",
+        plasma: "#a855f7",
       },
       fontFamily: {
         display: ["var(--font-display)", "sans-serif"],
